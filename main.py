@@ -1,5 +1,5 @@
 from aiogram import Bot, Dispatcher, types
-from aiogram.types import WebAppInfo, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import WebAppInfo, InlineKeyboardMarkup, InlineKeyboardButton, LabeledPrice
 from aiogram.filters import Command
 import asyncio
 
@@ -10,11 +10,15 @@ dp = Dispatcher()
 async def start_handler(message: types.Message):
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(
-            text="Открыть Mini App",
+            text="🎰 Открыть Casino App",
             web_app=WebAppInfo(url="https://mtkache09.github.io/untitled3/")
+        )],
+        [InlineKeyboardButton(
+            text="📋 Пользовательское соглашение",
+            web_app=WebAppInfo(url="https://mtkache09.github.io/untitled3/?page=terms")
         )]
     ])
-    await message.answer("Жми кнопку, чтобы открыть Casino App👇", reply_markup=keyboard)
+    await message.answer("Добро пожаловать! Выберите действие:", reply_markup=keyboard)
 
 async def main():
     await dp.start_polling(bot)
