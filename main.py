@@ -8,20 +8,16 @@ dp = Dispatcher()
 
 @dp.message(Command("start"))
 async def start_handler(message: types.Message):
-    keyboard = InlineKeyboardMarkup().add(
-        InlineKeyboardButton(
+    keyboard = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(
             text="Открыть Mini App",
             web_app=WebAppInfo(url="https://mtkache09.github.io/untitled3/")
-        )
-    )
-    await message.answer("Жми кнопку, чтобы открыть Mini App 👇", reply_markup=keyboard)
+        )]
+    ])
+    await message.answer("Жми кнопку, чтобы открыть Casino App👇", reply_markup=keyboard)
 
 async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-#Здесь был Вова
-
-
